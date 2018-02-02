@@ -81,7 +81,7 @@ class Fotos
 
 
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $_SESSION['msg'] = 'Fotografia <strong>' . basename($_FILES["fileToUpload"]["name"]) . 'cadastrada</strong> com sucesso!';
+            $_SESSION['msg'] = 'Fotografia <strong>' .  $this->alt . '</strong> cadastrada com sucesso!';
             $_SESSION['alert'] = "alert-success";
           } else {
             $_SESSION['msg'] = 'Algo deu errado <strong>tente novamente</strong>..';

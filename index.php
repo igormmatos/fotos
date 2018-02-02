@@ -74,7 +74,7 @@ $(document).ready(function(){
   <div class="clearfix pop">
     <span class="float-right" id="Adicionar"><i class="fa fa-plus" style="font-size: 35px; cursor:pointer"></i></span>
   </div>
-  <div class="pop_msg mt-5 ml-2">
+  <div class="pop_msg mt-4 ml-2">
     <?php if(isset($_SESSION['msg'])) :?>
       <div class="alert <?php echo $_SESSION['alert'];?> alert-dismissable fade show" style="position: relative;">
         <button type="button" class="close" data-dismiss="alert" id="fechar_msg">&times;</button>
@@ -85,14 +85,12 @@ $(document).ready(function(){
   <div class="jumbotron bg-white topo">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1>Teste<i>+</i></h1>
-        <!--h1>FOTO<i>+</i></h1-->
+        <h1>FOTO<i>+</i></h1>
       </div>
     </div>
     <div class="row text-center">
       <div class="col-md-12">
-        <h2>Teste</h2>
-        <!--h2>"A fotografia é uma das poucas coisas que tem poder sobre o tempo: ela o paralisa.."</h2-->
+        <h2>"A fotografia é uma das poucas coisas que tem poder sobre o tempo: ela o paralisa.."</h2>
       </div>
     </div>
   </div>
