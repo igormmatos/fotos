@@ -24,6 +24,37 @@ class Fotos
     $sql = $con->prepare("SELECT * FROM fotos ORDER BY id DESC");
     $sql->execute();
     $fotos=$sql->fetchAll(PDO::FETCH_CLASS);
+    $listar0 = '<div class="col-md-4 col-6 p-0">';
+    $listar1 = '<div class="col-md-4 col-6 p-0">';
+    $listar2 = '<div class="col-md-4 col-6 p-0">';
+    if($fotos)
+    {
+      $i = 0;
+      foreach ($fotos as $foto) {
+        if($i == 0){
+          $listar0 .= '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $i = 1;
+        }
+        else if($i == 1){
+          $listar1 .=  '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $i = 2;
+        }
+        else{
+          $listar2 .=  '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $i = 0;
+        }
+      }
+      $listar0 .= '</div>';
+      $listar1 .= '</div>';
+      $listar2 .= '</div>';
+
+      echo $listar0;
+      echo $listar1;
+      echo $listar2;
+
+    }else{
+      echo "Não existem registros..";
+    }
   }
   public function add(){
     if (isset($_POST['alt'])){

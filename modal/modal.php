@@ -12,7 +12,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="pwd">Palavra Chave:</label>
-          <input type="password" class="form-control" id="pwd" name="pwd" required>
+          <input type="password" class="form-control" id="pwd" name="pwd" value="2423" required>
         </div>
         <div class="form-group">
           <label for="alt">Nome Fotografia:</label>

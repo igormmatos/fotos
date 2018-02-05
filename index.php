@@ -15,7 +15,7 @@ $fotos->add();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Foto+</title>
+  <title>MyPhoto</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -48,6 +48,86 @@ $fotos->add();
   }
   .text-modal{
     font-family: 'Dosis', sans-serif;
+  }
+  .hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+  }
+
+  .hovereffect .overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    border-bottom: 1px solid #FFF;
+    border-top: 1px solid #FFF;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    -ms-transform: scale(0,1);
+    transform: scale(0,1);
+  }
+
+  .hovereffect:hover .overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  .hovereffect img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }
+
+  .hovereffect:hover img {
+    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+  }
+
+  .hovereffect h2 {
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    background-color: transparent;
+    color: #FFF;
+    padding: 1em 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,-100%,0);
+    transform: translate3d(0,-100%,0);
+  }
+
+  .hovereffect a, .hovereffect p {
+    color: #FFF;
+    padding: 1em 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+  }
+
+  .hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2 {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
   }
 </style>
 <script>
@@ -85,7 +165,7 @@ $(document).ready(function(){
   <div class="jumbotron bg-white topo">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1>FOTO<i>+</i></h1>
+        <h1><i>My</i>Photo</h1>
       </div>
     </div>
     <div class="row text-center">
@@ -97,24 +177,21 @@ $(document).ready(function(){
 </div>
 <div class="container-fluid p-0">
   <div class="row mx-auto">
-    <div class="col-md-4 col-6 p-0">
-      <!--img class="img-fluid" src="imagens/bridge.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/coffee.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/gondol.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/lights.jpg" alt="Bridge" width="100%"-->
-    </div>
-    <div class="col-md-4 col-6 p-0">
-      <!--img class="img-fluid" src="imagens/skies.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/sound.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/woods.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/workbench.jpg" alt="Bridge" width="100%"-->
-    </div>
-    <div class="col-md-4 col-12 p-0">
-      <!--img class="img-fluid" src="imagens/london.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/nature.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/notebook.jpg" alt="Bridge" width="100%">
-      <img class="img-fluid" src="imagens/rocks.jpg" alt="Bridge" width="100%"-->
-    </div>
+    <?php
+    $fotos->listar();
+    ?>
+    <!--div class="col-md-4 col-6 p-0">
+      <div class="hovereffect">
+        <img class="img-fluid" src="imagens/notebook.jpg" alt="notebook" width="100%">
+        <div class="overlay">
+          <h2>Effect 13</h2>
+          <p>
+            <a href="#">LINK HERE</a>
+          </p>
+        </div>
+      </div>
+      <img class="img-fluid" src="imagens/bridge.jpg" alt="Ponte" width="100%">
+    </div-->
   </div>
   <div class="row mx-auto text-dark p-0">
     <p class="mx-auto" style="cursor:pointer;" id="para_cima">
