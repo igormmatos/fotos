@@ -197,7 +197,7 @@ $(document).ready(function(){
 <?php include "modal/modal.php"?>
 </body>
 <div class="footer">
-  <div class="row mx-auto text-dark p-0">
+  <div class="row mx-auto text-dark p-0 mt-5">
     <p class="mx-auto" style="cursor:pointer;" id="para_cima">
       VOLTAR AO TOPO <i class="fa fa-arrow-circle-up" style="font-size:24px; color:#2e0000;"></i>
     </p>
