@@ -30,7 +30,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary">Adicionar</button>
+        <button type="submit" class="btn text-light" style="background-color: #2e0000">Adicionar</button>
       </div>
     </form>
   </div>

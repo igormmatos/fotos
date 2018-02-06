@@ -85,7 +85,13 @@ class Fotos
       echo $listar2;
 
     }else{
-      echo "Não existem registros..";
+      echo "
+      <div class='col-md-12 topo'>
+      <h4 class='text-center'>
+      Não existem fotografias ainda..
+      </h4>
+      <hr / style='width: 50%'>
+      </div>";
     }
   }
   public function add(){
