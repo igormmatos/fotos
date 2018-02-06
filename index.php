@@ -15,7 +15,7 @@ $fotos->add();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MyPhoto</title>
+  <title>MyPhotos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="imagens/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -177,7 +177,7 @@ $(document).ready(function(){
   <div class="jumbotron bg-white topo">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1><i>My</i>Photo</h1>
+        <h1><i>My</i>Photos</h1>
       </div>
     </div>
     <div class="row text-center">
