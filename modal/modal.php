@@ -19,6 +19,10 @@
           <input type="text" class="form-control" id="foto" name="alt" required>
         </div>
         <div class="form-group">
+          <label for="desc">Descrição Fotografia:</label>
+          <input type="text" class="form-control" id="desc" name="desc" required>
+        </div>
+        <div class="form-group">
           <label for="caminho">Local:</label>
           <input type="file" class="form-control" name="fileToUpload" required>
         </div>

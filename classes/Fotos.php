@@ -5,8 +5,9 @@ class Fotos
   private $id;
   private $caminho;
   private $alt;
+  private $desc;
 
-  public function __construct ($id=null, $caminho=null, $alt=null)
+  public function __construct ($id=null, $caminho=null, $alt=null, $desc=null)
   {
     $tipo_conexao = $_SERVER['HTTP_HOST'];
 
@@ -17,6 +18,7 @@ class Fotos
     $this -> id = $id;
     $this -> caminho = $caminho;
     $this -> alt = $alt;
+    $this -> desc = $desc;
   }
   public function listar(){
     $con = new PDO(SERVIDOR, USUARIO, SENHA);
@@ -32,15 +34,45 @@ class Fotos
       $i = 0;
       foreach ($fotos as $foto) {
         if($i == 0){
+          $listar0 .= '<div class="hovereffect">';
           $listar0 .= '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $listar0 .= '<div class="overlay">';
+          $listar0 .= '<span class="align-middle">';
+          $listar0 .= '<h2>'.$foto-> alt.'</h2>';
+          $listar0 .= '<p>';
+          $listar0 .= $foto-> descricao;
+          $listar0 .= '</p>';
+          $listar0 .= '</span>';
+          $listar0 .= '</div>';
+          $listar0 .= '</div>';
           $i = 1;
         }
         else if($i == 1){
+          $listar1 .= '<div class="hovereffect">';
           $listar1 .=  '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $listar1 .= '<div class="overlay">';
+          $listar1 .= '<span class="align-middle">';
+          $listar1 .= '<h2>'.$foto-> alt.'</h2>';
+          $listar1 .= '<p>';
+          $listar1 .= $foto-> descricao;
+          $listar1 .= '</p>';
+          $listar1 .= '</span>';
+          $listar1 .= '</div>';
+          $listar1 .= '</div>';
           $i = 2;
         }
         else{
+          $listar2 .= '<div class="hovereffect">';
           $listar2 .=  '<img class="img-fluid" src="'.$foto-> caminho.'" alt="'.$foto-> alt.'" width="100%">';
+          $listar2 .= '<div class="overlay">';
+          $listar2 .= '<span class="align-middle">';
+          $listar2 .= '<h2>'.$foto-> alt.'</h2>';
+          $listar2 .= '<p>';
+          $listar2 .= $foto-> descricao;
+          $listar2 .= '</p>';
+          $listar2 .= '</span>';
+          $listar2 .= '</div>';
+          $listar2 .= '</div>';
           $i = 0;
         }
       }
@@ -101,10 +133,11 @@ class Fotos
           $con = new PDO(SERVIDOR, USUARIO, SENHA);
 
           $this->alt=$_POST['alt'];
+          $this->desc=$_POST['desc'];
 
 
-          $sql = $con->prepare("INSERT INTO fotos VALUES(NULL,?,?)");
-          $sql->execute(array($target_file, $this->alt));
+          $sql = $con->prepare("INSERT INTO fotos VALUES(NULL,?,?,?)");
+          $sql->execute(array($target_file, $this->alt,$this->desc));
 
           $_SESSION['msg'] = "<strong>Cadastrado</strong> com sucesso!";
           $_SESSION['alert'] = "alert-success";

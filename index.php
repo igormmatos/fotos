@@ -4,7 +4,7 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 
 session_start();
-
+header("Content-type: text/html; charset=utf-8");
 require_once ("classes/Fotos.php");
 
 $fotos = new Fotos();
@@ -51,12 +51,12 @@ $fotos->add();
   }
   .hovereffect {
     width: 100%;
-    height: 100%;
     float: left;
     overflow: hidden;
     position: relative;
     text-align: center;
     cursor: default;
+    font-family: 'Dosis', sans-serif;
   }
 
   .hovereffect .overlay {
@@ -180,18 +180,6 @@ $(document).ready(function(){
     <?php
     $fotos->listar();
     ?>
-    <!--div class="col-md-4 col-6 p-0">
-      <div class="hovereffect">
-        <img class="img-fluid" src="imagens/notebook.jpg" alt="notebook" width="100%">
-        <div class="overlay">
-          <h2>Effect 13</h2>
-          <p>
-            <a href="#">LINK HERE</a>
-          </p>
-        </div>
-      </div>
-      <img class="img-fluid" src="imagens/bridge.jpg" alt="Ponte" width="100%">
-    </div-->
   </div>
   <div class="row mx-auto text-dark p-0">
     <p class="mx-auto" style="cursor:pointer;" id="para_cima">
