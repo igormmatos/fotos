@@ -15,15 +15,17 @@ $fotos->add();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MyPhoto</title>
+  <title>MyPhotos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="imagens/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Dosis" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat|Dosis" rel="stylesheet">
   <style>
   .topo{
     font-family: 'Caveat', cursive;
@@ -37,7 +39,6 @@ $fotos->add();
     position:absolute;
     width: 20%;
     font-family: 'Dosis', sans-serif;
-
   }
   a{
     color: #fff;
@@ -129,13 +130,24 @@ $fotos->add();
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
   }
+  .footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Dosis', sans-serif;
+    font-size: 15px;
+  }
+  .cor-footer{
+    background-color: #2e0000;
+  }
 </style>
 <script>
 $(document).ready(function(){
   $("#para_cima").click(function(){
     $('html, body').animate({scrollTop: 0}, 300);
   });
-  $("#Adicionar").click(function(){
+  $(".add").click(function(){
     $("#add_foto").modal();
   });
   $("#fechar_msg").click(function(){
@@ -151,8 +163,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-  <div class="clearfix pop">
-    <span class="float-right" id="Adicionar"><i class="fa fa-plus" style="font-size: 35px; cursor:pointer"></i></span>
+  <div class="clearfix pop add">
+    <span class="float-right add" id="Adicionar"><i class="fa fa-plus" style="font-size: 35px; cursor:pointer; color:#2e0000;"></i></span>
   </div>
   <div class="pop_msg mt-4 ml-2">
     <?php if(isset($_SESSION['msg'])) :?>
@@ -165,7 +177,7 @@ $(document).ready(function(){
   <div class="jumbotron bg-white topo">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1><i>My</i>Photo</h1>
+        <h1><i>My</i>Photos</h1>
       </div>
     </div>
     <div class="row text-center">
@@ -181,17 +193,23 @@ $(document).ready(function(){
     $fotos->listar();
     ?>
   </div>
-  <div class="row mx-auto text-dark p-0">
-    <p class="mx-auto" style="cursor:pointer;" id="para_cima">
-      VOLTAR AO TOPO <i class="fa fa-arrow-circle-up" style="font-size:24px"></i>
-    </p>
-  </div>
-  <div class="row mx-auto bg-dark text-light p-0">
-    <p class="mx-auto pt-3">
-      Desenvolvido por <strong><a href="https://igormmatos.github.io/" target="_blank">Igor M Matos</a></strong>
-    </p>
-  </div>
 </div>
 <?php include "modal/modal.php"?>
 </body>
+<div class="footer">
+  <div class="row mx-auto text-dark p-0 mt-5">
+    <p class="mx-auto" style="cursor:pointer;" id="para_cima">
+      VOLTAR AO TOPO <i class="fa fa-arrow-circle-up" style="font-size:24px; color:#2e0000;"></i>
+    </p>
+  </div>
+  <div class="row mx-auto text-light p-0 cor-footer">
+    <div class="col-1"></div>
+    <div class="col-11">
+      <p class="mx-auto pt-3">
+        Desenvolvido por <strong><a href="https://igormmatos.github.io/" target="_blank">Igor M Matos</a></strong>
+      </p>
+
+    </div>
+  </div>
+</div>
 </html>

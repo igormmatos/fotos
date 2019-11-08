@@ -1,4 +1,4 @@
-<?php
+,<?php
 
 class Fotos
 {
@@ -11,9 +11,16 @@ class Fotos
   {
     $tipo_conexao = $_SERVER['HTTP_HOST'];
 
-    define('SERVIDOR', 'mysql:host=localhost;dbname=fotos');
-    define('USUARIO', 'root');
-    define('SENHA', 'root');
+    if (($tipo_conexao == 'localhost') || ($tipo_conexao == '127.0.0.1')){
+      define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
+      define('USUARIO', 'root');
+      define('SENHA', 'root');
+    }
+    else {
+      define('SERVIDOR', 'mysql:host=localhost;dbname=igor_taskmanager');
+      define('USUARIO', 'igor_root2c');
+      define('SENHA', 'rootigor');
+    }
 
     $this -> id = $id;
     $this -> caminho = $caminho;
@@ -26,9 +33,9 @@ class Fotos
     $sql = $con->prepare("SELECT * FROM fotos ORDER BY id DESC");
     $sql->execute();
     $fotos=$sql->fetchAll(PDO::FETCH_CLASS);
-    $listar0 = '<div class="col-md-4 col-6 p-0">';
-    $listar1 = '<div class="col-md-4 col-6 p-0">';
-    $listar2 = '<div class="col-md-4 col-6 p-0">';
+    $listar0 = '<div class="col-md-4 p-0">';
+    $listar1 = '<div class="col-md-4 p-0">';
+    $listar2 = '<div class="col-md-4 p-0">';
     if($fotos)
     {
       $i = 0;
@@ -85,13 +92,20 @@ class Fotos
       echo $listar2;
 
     }else{
-      echo "Não existem registros..";
+      echo "
+      <div class='col-md-12 topo'>
+      <h4 class='text-center'>
+      Não existem fotografias ainda..
+      </h4>
+      <hr / style='width: 50%'>
+      </div>";
     }
-  }
-  public function add(){
+  }public function add(){
     if (isset($_POST['alt'])){
       if($_POST['pwd'] == "2423")
       {
+        $msg = "O arquivo <strong>não</strong> pode ser cadastrado!";
+        $alert= "alert-danger";
         $target_dir = "imagens/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -102,34 +116,25 @@ class Fotos
           if ($check !== false) {
             $uploadOk = 1;
           } else {
-            /*$_SESSION['msg'] = "O arquivo <strong>não</strong> é uma imagem!";
-            $_SESSION['alert'] = "alert-danger";*/
+            $msg = "O arquivo <strong>não</strong> é uma imagem!";
+            $alert= "alert-danger";
             $uploadOk = 0;
           }
         }
         // Check if file already exists
         if (file_exists($target_file)) {
-          $_SESSION['msg'] = "Fotografia já foi <strong>cadastrada</strong>!";
-          $_SESSION['alert'] = "alert-warning";
-          $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 999999) {
-          $_SESSION['msg'] = "Tamanho de arquivo <strong>excedeu</strong> o limite permitido!";
-          $_SESSION['alert'] = "alert-warning";
+          $msg= "Fotografia já foi <strong>cadastrada</strong>!";
+          $alert= "alert-warning";
           $uploadOk = 0;
         }
         // Allow certain file formats
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif") {
-          $_SESSION['msg'] = "São permitidos somente arquivos <strong>JPG, JPEG, PNG & GIF</strong>!";
-          $_SESSION['alert'] = "alert-warning";
+          $msg= "São permitidos somente arquivos <strong>JPG, JPEG, PNG & GIF</strong>!";
+          $alert= "alert-warning";
           $uploadOk = 0;
         }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0)
-        {
-        } else {
+        if ($uploadOk != 0 && move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           $con = new PDO(SERVIDOR, USUARIO, SENHA);
 
           $this->alt=$_POST['alt'];
@@ -139,18 +144,12 @@ class Fotos
           $sql = $con->prepare("INSERT INTO fotos VALUES(NULL,?,?,?)");
           $sql->execute(array($target_file, $this->alt,$this->desc));
 
-          $_SESSION['msg'] = "<strong>Cadastrado</strong> com sucesso!";
+          $_SESSION['msg'] = 'Fotografia <strong>' .  $this->alt . '</strong> cadastrada com sucesso!';
           $_SESSION['alert'] = "alert-success";
           header("Location: index.php");
-
-
-          if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $_SESSION['msg'] = 'Fotografia <strong>' .  $this->alt . '</strong> cadastrada com sucesso!';
-            $_SESSION['alert'] = "alert-success";
-          } else {
-            $_SESSION['msg'] = 'Algo deu errado <strong>tente novamente</strong>..';
-            $_SESSION['alert'] = "alert-danger";
-          }
+        } else {
+          $_SESSION['msg'] = $msg;
+          $_SESSION['alert'] = $alert;
         }
       }
       else

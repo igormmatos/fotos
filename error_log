@@ -1,0 +1,20 @@
+[06-Feb-2018 06:46:21 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/igor/public_html/fotos/classes/Fotos.php:24
+Stack trace:
+#0 /home/igor/public_html/fotos/classes/Fotos.php(24): PDO->__construct('mysql:host=loca...', 'root', 'root')
+#1 /home/igor/public_html/fotos/index.php(193): Fotos->listar()
+#2 {main}
+  thrown in /home/igor/public_html/fotos/classes/Fotos.php on line 24
+[18-Mar-2018 21:54:18 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[18-Mar-2018 21:54:18 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[25-Mar-2018 16:44:27 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[25-Mar-2018 16:44:27 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[25-Mar-2018 16:57:40 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[25-Mar-2018 16:57:40 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[25-Mar-2018 16:58:02 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[25-Mar-2018 16:58:02 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[25-Mar-2018 17:11:18 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[25-Mar-2018 17:11:18 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[25-Mar-2018 17:11:19 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[25-Mar-2018 17:11:19 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
+[28-Mar-2018 14:34:03 America/Chicago] PHP Warning:  file_get_contents(videos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 8
+[28-Mar-2018 14:34:03 America/Chicago] PHP Warning:  file_get_contents(fotos_arquivos.txt): failed to open stream: No such file or directory in /home/igor/public_html/fotos/index.php on line 9
