@@ -163,8 +163,13 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="clearfix pop add">
     <span class="float-right add" id="Adicionar"><i class="fa fa-plus" style="font-size: 35px; cursor:pointer; color:#2e0000;"></i></span>
+=======
+  <div class="clearfix pop">
+    <span class="float-right" id="Adicionar"><i class="fa fa-plus" style="font-size: 35px; cursor:pointer; color:#2e0000;"></i></span>
+>>>>>>> bf2d5491e17b92b48582307ad0171ea9bdf6b728
   </div>
   <div class="pop_msg mt-4 ml-2">
     <?php if(isset($_SESSION['msg'])) :?>
@@ -212,4 +217,8 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> bf2d5491e17b92b48582307ad0171ea9bdf6b728

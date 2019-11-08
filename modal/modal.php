@@ -15,7 +15,11 @@
           <input type="password" class="form-control" id="pwd" name="pwd" required>
         </div>
         <div class="form-group">
+<<<<<<< HEAD
           <label for="caminho">Local:</label>
+=======
+          <label for="caminho">Fotografia:</label>
+>>>>>>> bf2d5491e17b92b48582307ad0171ea9bdf6b728
           <input type="file" class="form-control" name="fileToUpload" required>
         </div>
         <div class="form-group">
